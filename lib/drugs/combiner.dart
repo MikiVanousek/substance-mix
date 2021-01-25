@@ -29,7 +29,7 @@ class Combiner{
                 [0, 0, 0, 0,], //cannabis
                    [0, 1, 0,], //ketamine
                       [1, 0,], //mxe
-                         [0,]
+                         [0,], //dxm
   ];
 
   /*
