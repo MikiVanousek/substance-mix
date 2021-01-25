@@ -7,4 +7,5 @@ class DCDimens{
   static const double cardHeight = 50;
   static const double appBarHeight = 70;
   static const double iconSize = 24;
+  static const double appBarIconPadding = (appBarHeight - iconSize) / 2;
 }

@@ -56,21 +56,26 @@ class DCHomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          AspectRatio(aspectRatio: 1),
-          Center(
-              child: Text(
-            'Drug Combos',
-            style: DCTextStyles.title,
-          )),
-          AspectRatio(
-            aspectRatio: 1,
+          SizedBox(width: DCDimens.iconSize + DCDimens.appBarIconPadding,),
+          Expanded(
             child: Center(
-                child: SvgPicture.asset(
-              DCIcons.info,
-              height: DCDimens.iconSize,
-              width: DCDimens.iconSize,
-            )),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SvgPicture.asset(DCIcons.logo, width: 32, height: 32,),
+                    Text(
+              'Drug Combos',
+              style: DCTextStyles.title,
+            ),
+                  ],
+                )),
           ),
+          SvgPicture.asset(
+            DCIcons.info,
+            height: DCDimens.iconSize,
+            width: DCDimens.iconSize,
+          ),
+          SizedBox(width: DCDimens.appBarIconPadding,)
         ],
       ),
       children: [
