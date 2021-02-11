@@ -9,4 +9,15 @@ class DrugCategory {
   static const DrugCategory stimulants = DrugCategory('Stimulants', 2);
   static const DrugCategory depresants = DrugCategory('Depresants', 3);
   static const DrugCategory opioids = DrugCategory('Opioids', 4);
+
+  static const List<DrugCategory> all = [
+    psychedelics,
+    dissociatives,
+    stimulants,
+    depresants,
+    opioids,
+  ];
+
+  @override
+  String toString() => name;
 }

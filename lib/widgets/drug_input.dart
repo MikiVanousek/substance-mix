@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:drug_combos/presets/dc_colors.dart';
 import 'package:drug_combos/presets/dc_dimens.dart';
 import 'package:drug_combos/presets/dc_icons.dart';
@@ -8,9 +10,12 @@ import 'package:flutter_svg/svg.dart';
 
 class DrugInput extends StatelessWidget {
   final String label;
+  final bool selected;
   final String content;
+  final void Function() onTap;
 
-  const DrugInput({this.label, this.content});
+  const DrugInput(
+      {this.label, this.content, this.onTap, this.selected = false});
 
   @override
   Widget build(BuildContext context) {
@@ -24,27 +29,32 @@ class DrugInput extends StatelessWidget {
         SizedBox(
           height: DCDimens.paddingHorizontalSmall,
         ),
-        DCCard(
-          child: Padding(
-            padding:
-                const EdgeInsets.only(left: DCDimens.paddingSmall),
+        GestureDetector(
+          onTap: onTap,
+          child: DCCard(
+            color: selected ? DCColors.accent : null,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   content,
-                  style: DCTextStyles.display1,
+                  style: selected
+                      ? DCTextStyles.display1Inverted
+                      : DCTextStyles.display1,
                 ),
-                AspectRatio(
-                    aspectRatio: 1,
-                    child: Center(
-                        child: SvgPicture.asset(
-                      DCIcons.arrow,
-                      width: DCDimens.iconSize,
-                      height: DCDimens.iconSize,
-                      color: DCColors.accent,
-                    )))
+                Transform.rotate(
+                  angle: selected ? pi * 0.5 : 0,
+                  child: AspectRatio(
+                      aspectRatio: 1,
+                      child: Center(
+                          child: SvgPicture.asset(
+                        DCIcons.arrow,
+                        width: DCDimens.iconSize,
+                        height: DCDimens.iconSize,
+                        color: selected ? DCColors.primary : DCColors.accent,
+                      ))),
+                )
               ],
             ),
           ),

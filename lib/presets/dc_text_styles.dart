@@ -8,6 +8,12 @@ class DCTextStyles {
      fontSize: 22
   );
 
+  static const TextStyle display1Inverted = TextStyle(
+      fontFamily: 'Play',
+      color: DCColors.primary,
+      fontSize: 22
+  );
+
   static const TextStyle title = TextStyle(
       fontFamily: 'GravitasOne',
       color: DCColors.accent,

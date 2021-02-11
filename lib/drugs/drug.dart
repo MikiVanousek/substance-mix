@@ -7,11 +7,6 @@ class Drug {
 
   const Drug(this.id, this.name, this.category);
 
-  @override
-  bool operator ==(other){
-    return other is Drug && other.id == this.id;
-  }
-
   static const Drug lsd           = Drug(0, 'LSD', DrugCategory.psychedelics);
   static const Drug mushrooms     = Drug(1, 'Mushrooms', DrugCategory.psychedelics);
   static const Drug dmt           = Drug(2, 'DMT', DrugCategory.psychedelics);
@@ -32,4 +27,15 @@ class Drug {
     dxm,
     nitrous
   ];
+
+  @override
+  int get hashCode => id.hashCode;
+
+  @override
+  bool operator ==(other){
+    return other is Drug && other.id == this.id;
+  }
+
+  @override
+  String toString() => name;
 }
