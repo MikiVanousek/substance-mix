@@ -29,34 +29,32 @@ class DrugInput extends StatelessWidget {
         SizedBox(
           height: DCDimens.paddingHorizontalSmall,
         ),
-        GestureDetector(
+        DCCard(
           onTap: onTap,
-          child: DCCard(
-            color: selected ? DCColors.accent : null,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  content,
-                  style: selected
-                      ? DCTextStyles.display1Inverted
-                      : DCTextStyles.display1,
-                ),
-                Transform.rotate(
-                  angle: selected ? pi * 0.5 : 0,
-                  child: AspectRatio(
-                      aspectRatio: 1,
-                      child: Center(
-                          child: SvgPicture.asset(
-                        DCIcons.arrow,
-                        width: DCDimens.iconSize,
-                        height: DCDimens.iconSize,
-                        color: selected ? DCColors.primary : DCColors.accent,
-                      ))),
-                )
-              ],
-            ),
+          color: selected ? DCColors.accent : null,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                content,
+                style: selected
+                    ? DCTextStyles.display1Inverted
+                    : DCTextStyles.display1,
+              ),
+              Transform.rotate(
+                angle: selected ? pi * 0.5 : 0,
+                child: AspectRatio(
+                    aspectRatio: 1,
+                    child: Center(
+                        child: SvgPicture.asset(
+                      DCIcons.arrow,
+                      width: DCDimens.iconSize,
+                      height: DCDimens.iconSize,
+                      color: selected ? DCColors.primary : DCColors.accent,
+                    ))),
+              )
+            ],
           ),
         )
       ],

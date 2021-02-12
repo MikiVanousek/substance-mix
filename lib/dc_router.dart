@@ -1,9 +1,8 @@
 import 'dart:developer';
 
-import 'package:drug_combos/dc_bloc.dart';
+import 'package:drug_combos/bloc/dc_bloc.dart';
 import 'package:drug_combos/screens/dc_homescreen.dart';
 import 'package:drug_combos/screens/dc_picker_popup.dart';
-import 'package:drug_combos/widgets/drug_input.dart';
 import 'package:flutter/cupertino.dart';
 
 class DCRouter {

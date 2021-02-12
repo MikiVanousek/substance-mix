@@ -8,10 +8,10 @@ class DCBloc extends Bloc<DrugSelectedEvent, DrugSelectionState>{
 
   @override
   Stream<DrugSelectionState> mapEventToState(DrugSelectedEvent event) async*{
-    if(event is FirstDrugSelectedEvent){
+    if(event.type == DrugInputType.first){
       yield DrugSelectionState(firstDrug: event.drug, secondDrug: state.secondDrug);
     }
-    else if(event is SecondDrugSelectedEvent){
+    else if(event.type == DrugInputType.second){
       yield DrugSelectionState(firstDrug: state.firstDrug, secondDrug: event.drug);
     }
     else {
@@ -21,17 +21,10 @@ class DCBloc extends Bloc<DrugSelectedEvent, DrugSelectionState>{
 
 }
 
-abstract class DrugSelectedEvent {
+class DrugSelectedEvent {
   final Drug drug;
-  DrugSelectedEvent(this.drug);
-}
-
-class FirstDrugSelectedEvent extends DrugSelectedEvent{
-  FirstDrugSelectedEvent(Drug drug) : super(drug);
-}
-
-class SecondDrugSelectedEvent extends DrugSelectedEvent{
-  SecondDrugSelectedEvent(Drug drug) : super(drug);
+  final DrugInputType type;
+  DrugSelectedEvent(this.drug, this.type);
 }
 
 
@@ -46,9 +39,13 @@ class DrugSelectionState {
 
   DrugSelectionState({this.firstDrug, this.secondDrug});
 
+
+  @override
+  String toString() => 'First drug: $firstDrug \t Second drug: $secondDrug';
+
   @override
   bool operator ==(Object other) {
-    return other is DrugSelectionState && other.firstDrug == other.firstDrug && other.secondDrug == other.secondDrug;
+    return other is DrugSelectionState && other.firstDrug == firstDrug && other.secondDrug == secondDrug;
   }
 
   @override

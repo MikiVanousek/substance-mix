@@ -1,37 +1,24 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:drug_combos/dc_bloc.dart';
+import 'package:drug_combos/bloc/dc_bloc.dart';
 import 'package:drug_combos/drugs/drug.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 main() {
-  group('DCBloc', () {
-    DCBloc bloc;
-
-    setUp(() {
-      bloc = DCBloc();
-    });
-
-    test('initial state', () {
-      expect(bloc.state.firstDrug, null);
-      expect(bloc.state.secondDrug, null);
-    });
+  group('Bloc tests', () {
 
     blocTest('changing first drug',
-        build: () => bloc,
-        act: (bloc) => bloc.add(FirstDrugSelectedEvent(Drug.cannabis)),
-      expect: [DrugSelectionState(firstDrug: Drug.cannabis, secondDrug: null)]
+        build: () => DCBloc(),
+        act: (bloc) {
+          bloc.add(DrugSelectedEvent(Drug.cannabis, DrugInputType.first));
+          bloc.add(DrugSelectedEvent(Drug.lsd, DrugInputType.second));
+          bloc.add(DrugSelectedEvent(null, DrugInputType.first));
+        },
+        expect: [
+          DrugSelectionState(firstDrug: Drug.cannabis, secondDrug: null),
+          DrugSelectionState(firstDrug: Drug.cannabis, secondDrug: Drug.lsd),
+          DrugSelectionState(firstDrug: null, secondDrug: Drug.lsd),
+        ]
     );
 
-    blocTest('changing second drug',
-        build: () => bloc,
-        act: (bloc) => bloc.add(SecondDrugSelectedEvent(Drug.lsd)),
-        expect: [DrugSelectionState(firstDrug: Drug.cannabis, secondDrug: Drug.lsd)]
-    );
-
-    blocTest('resetting second drug',
-        build: () => bloc,
-        act: (bloc) => bloc.add(SecondDrugSelectedEvent(null)),
-        expect: [DrugSelectionState(firstDrug: Drug.cannabis, secondDrug: null)]
-    );
-  });
+});
 }

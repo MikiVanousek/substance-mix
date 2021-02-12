@@ -1,4 +1,3 @@
-import 'package:drug_combos/dc_bloc.dart';
 import 'package:drug_combos/presets/dc_colors.dart';
 import 'package:drug_combos/presets/dc_dimens.dart';
 import 'package:drug_combos/presets/dc_icons.dart';
@@ -14,6 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'bloc/dc_bloc.dart';
 import 'drugs/drug.dart';
 
 void main() {

@@ -6,21 +6,25 @@ class DCCard extends StatelessWidget{
   final Widget child;
   final double height;
   final Color color;
+  final void Function() onTap;
 
-  const DCCard({this.height = DCDimens.cardHeight, this.child, this.color = DCColors.primary});
+  const DCCard({this.height = DCDimens.cardHeight, this.child, this.color = DCColors.primary, this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: color,
-        border: Border.all(color: DCColors.accent, width: 1),
-        borderRadius: BorderRadius.circular(DCDimens.radius),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          color: color,
+          border: Border.all(color: DCColors.accent, width: 1),
+          borderRadius: BorderRadius.circular(DCDimens.radius),
+        ),
+        height: height,
+        padding: EdgeInsets.symmetric(horizontal: DCDimens.paddingHorizontalSmall),
+        alignment: Alignment.centerLeft,
+        child: child,
       ),
-      height: height,
-      padding: EdgeInsets.symmetric(horizontal: DCDimens.paddingHorizontalSmall),
-      alignment: Alignment.centerLeft,
-      child: child,
     );
   }
 

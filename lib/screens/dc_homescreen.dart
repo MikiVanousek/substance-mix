@@ -1,3 +1,4 @@
+import 'package:drug_combos/bloc/dc_bloc.dart';
 import 'package:drug_combos/dc_router.dart';
 import 'package:drug_combos/drugs/drug.dart';
 import 'package:drug_combos/presets/dc_dimens.dart';
@@ -10,7 +11,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../dc_bloc.dart';
 
 class DCHomescreen extends StatelessWidget {
 
@@ -29,7 +29,7 @@ class DCHomescreen extends StatelessWidget {
                   children: [
                     SvgPicture.asset(DCIcons.logo, width: 32, height: 32,),
                     Text(
-                      'Drug Combos',
+                      'SubstanceMix',
                       style: DCTextStyles.title,
                     ),
                   ],
@@ -48,7 +48,7 @@ class DCHomescreen extends StatelessWidget {
           height: DCDimens.paddingHorizontalBig,
         ),
         BlocBuilder<DCBloc, DrugSelectionState>(
-          builder: (BuildContext buildContext, var state) => DrugInput(
+          builder: (_, state) => DrugInput(
             label: 'First Drug:',
             content: state?.firstDrug?.name ?? 'Choose...',
             onTap: () => Navigator.of(context).pushNamed(DCRouter.routeFirstDrugPickerScreen),
@@ -57,10 +57,12 @@ class DCHomescreen extends StatelessWidget {
         SizedBox(
           height: DCDimens.paddingHorizontalBig,
         ),
-        DrugInput(
-          label: 'Second Drug:',
-          content: BlocProvider.of<DCBloc>(context).state.secondDrug?.name ?? 'Choose...',
-          onTap: ()=> Navigator.of(context).pushNamed(DCRouter.routeSecondDrugPickerScreen),
+        BlocBuilder<DCBloc, DrugSelectionState>(
+          builder: (_, state) => DrugInput(
+            label: 'Second Drug:',
+            content: state?.secondDrug?.name ?? 'Choose...',
+            onTap: ()=> Navigator.of(context).pushNamed(DCRouter.routeSecondDrugPickerScreen),
+          ),
         ),
         SizedBox(
           height: DCDimens.paddingHorizontalBig,
