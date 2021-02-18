@@ -67,7 +67,8 @@ class DCHomescreen extends StatelessWidget {
         SizedBox(
           height: DCDimens.paddingHorizontalBig,
         ),
-        Expanded(child: ResultOutput()),
+        Expanded(child: BlocBuilder<DCBloc, DrugSelectionState>(
+            builder: (_, state) => ResultOutput(state.result))),
         SizedBox(
           height: 64,
         ),

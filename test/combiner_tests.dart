@@ -5,12 +5,12 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('Testing basic combiner functionality...', () {
-    int numberOfDrugs = Drug.all.length;
+    int numberOfDrugs = Drug.allDrgus.length;
     for (int i = 0; i < numberOfDrugs - 1; i++) {
       expect(Combiner.combos[i].length, numberOfDrugs - i - 1,
           reason:
           'First row should be numberOfDrugs long, all other 1 shorter than the one before them.');
-      expect(Combiner.combine(Drug.all[i], Drug.all[i]), ComboResult.NaN, reason: 'All drugs should return NaN when combined with themselves.');
+      expect(Combiner.combine(Drug.allDrgus[i], Drug.allDrgus[i]), ComboResult.NaN, reason: 'All drugs should return NaN when combined with themselves.');
     }
 
   });

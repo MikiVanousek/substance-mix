@@ -4,13 +4,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PickerBloc extends Bloc<ItemSelectedEvent, PickerState>{
-  PickerBloc() : super(PickerState(DrugCategory.all));
+  PickerBloc() : super(PickerState(DrugCategory.allCategories));
 
 
   @override
   Stream<PickerState> mapEventToState(ItemSelectedEvent event) async* {
     if(state.selectedCategory == null){
-      DrugCategory category = DrugCategory.all[event.itemId];
+      DrugCategory category = DrugCategory.allCategories[event.itemId];
       yield PickerState(category.drugs, selectedCategory: category);
     }
     else{
