@@ -16,7 +16,7 @@ class ResultOutput extends StatelessWidget {
     ComboResult.lrDisharmony: 'Low Risk & Disharmony',
     ComboResult.beCautious: 'Be Cautious!',
     ComboResult.notSafe: 'Not Safe!',
-    ComboResult.dangerous: 'Dangerous1',
+    ComboResult.dangerous: 'Dangerous!',
     ComboResult.NaN: 'Please select two different drugs...',
   };
 
