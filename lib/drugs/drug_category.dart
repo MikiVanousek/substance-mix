@@ -7,7 +7,7 @@ class DrugCategory {
 
   const DrugCategory(this.id, this.name, this.drugs);
 
-  static const DrugCategory all = DrugCategory(0, 'All', Drug.allDrgus);
+  static const DrugCategory all = DrugCategory(0, 'All', Drug.allDrugs);
 
   static const DrugCategory psychedelics = DrugCategory(1, 'Psychedelics', [
     Drug.lsd,
