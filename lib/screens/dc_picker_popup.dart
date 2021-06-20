@@ -33,25 +33,36 @@ class DCPickerPopup extends PopupRoute {
       create: (_) => PickerBloc(),
       child: BlocListener<PickerBloc, PickerState>(
         listener: (_, state) {
-          if (state.selectedDrug != null){
-            BlocProvider.of<DCBloc>(context).add(DrugSelectedEvent(state.selectedDrug, type));
+          if (state.selectedDrug != null) {
+            BlocProvider.of<DCBloc>(context)
+                .add(DrugSelectedEvent(state.selectedDrug, type));
             Navigator.of(context).pop();
           }
         },
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: DCDimens.paddingBig),
+            padding:
+                const EdgeInsets.symmetric(horizontal: DCDimens.paddingBig),
             child: Column(
               children: [
                 SizedBox(
                   height: 100,
                 ),
                 BlocBuilder<PickerBloc, PickerState>(
-                    builder: (_, state) => DrugInput(
-                          label: state.selectedCategory == null ? 'Choose drug category:' : 'Choose drug:',
+                    builder: (context, state) => DrugInput(
+                          label: state.selectedCategory == null
+                              ? 'Choose drug category:'
+                              : 'Choose drug:',
                           selected: true,
                           content: state.selectedCategory?.name ?? 'Choose...',
+                          onTap: () {
+                            if (state.selectedCategory == null) {
+                              Navigator.pop(context);
+                            } else {
+                              BlocProvider.of<PickerBloc>(context).reset();
+                            }
+                          },
                         )),
                 SizedBox(
                   height: 15,
@@ -64,9 +75,10 @@ class DCPickerPopup extends PopupRoute {
                         return Padding(
                           padding: const EdgeInsets.only(top: 5),
                           child: DCCard(
-                            onTap: () => BlocProvider.of<PickerBloc>(context).add(ItemSelectedEvent(index)),
+                            onTap: () => BlocProvider.of<PickerBloc>(context)
+                                .itemSelected(index),
                             child: Text(
-                             state.selectableObjects[index].toString(),
+                              state.selectableObjects[index].toString(),
                               style: DCTextStyles.display1,
                             ),
                           ),

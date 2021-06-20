@@ -3,22 +3,26 @@ import 'package:drug_combos/drugs/drug_category.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class PickerBloc extends Bloc<ItemSelectedEvent, PickerState>{
-  PickerBloc() : super(PickerState(DrugCategory.allCategories));
+class PickerBloc extends Cubit<PickerState> {
+  static const initialState = PickerState(DrugCategory.allCategories);
 
+  PickerBloc() : super(initialState);
 
-  @override
-  Stream<PickerState> mapEventToState(ItemSelectedEvent event) async* {
-    if(state.selectedCategory == null){
-      DrugCategory category = DrugCategory.allCategories[event.itemId];
-      yield PickerState(category.drugs, selectedCategory: category);
-    }
-    else{
-      Drug selectedDrug = state.selectedCategory.drugs[event.itemId];
-      yield PickerState([], selectedCategory: state.selectedCategory, selectedDrug: selectedDrug);
+  void itemSelected(int id) {
+    if (state.selectedCategory == null) {
+      DrugCategory category = DrugCategory.allCategories[id];
+      emit(PickerState(category.drugs, selectedCategory: category));
+    } else {
+      Drug selectedDrug = state.selectedCategory.drugs[id];
+      emit(PickerState([],
+          selectedCategory: state.selectedCategory,
+          selectedDrug: selectedDrug));
     }
   }
 
+  void reset() {
+    emit(initialState);
+  }
 }
 
 class PickerState {
@@ -26,11 +30,6 @@ class PickerState {
   final DrugCategory selectedCategory;
   final Drug selectedDrug;
 
-  PickerState(this.selectableObjects, {this.selectedCategory, this.selectedDrug});
-}
-
-class ItemSelectedEvent{
-  final int itemId;
-
-  ItemSelectedEvent(this.itemId);
+  const PickerState(this.selectableObjects,
+      {this.selectedCategory, this.selectedDrug});
 }
