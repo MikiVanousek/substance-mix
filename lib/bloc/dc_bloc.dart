@@ -4,6 +4,8 @@ import 'package:drug_combos/drugs/drug.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiver/core.dart';
 
+import 'drug_selection_state.dart';
+
 class DCBloc extends Bloc<DrugSelectedEvent, DrugSelectionState> {
   DCBloc() : super(DrugSelectionState());
 
@@ -11,7 +13,7 @@ class DCBloc extends Bloc<DrugSelectedEvent, DrugSelectionState> {
   Stream<DrugSelectionState> mapEventToState(DrugSelectedEvent event) async* {
     if (event.type == DrugInputType.first) {
       yield DrugSelectionState(
-          firstDrug: event.drug, secondDrug: state.secondDrug);
+        firstDrug: event.drug, secondDrug: state.secondDrug);
     } else if (event.type == DrugInputType.second) {
       yield DrugSelectionState(
           firstDrug: state.firstDrug, secondDrug: event.drug);
@@ -30,24 +32,3 @@ class DrugSelectedEvent {
 
 enum DrugInputType { first, second }
 
-class DrugSelectionState {
-  final Drug firstDrug;
-  final Drug secondDrug;
-  final ComboResult result;
-
-  DrugSelectionState({this.firstDrug, this.secondDrug})
-      : result = Combiner.combine(firstDrug, secondDrug);
-
-  @override
-  String toString() => 'First drug: $firstDrug \t Second drug: $secondDrug';
-
-  @override
-  bool operator ==(Object other) {
-    return other is DrugSelectionState &&
-        other.firstDrug == firstDrug &&
-        other.secondDrug == secondDrug;
-  }
-
-  @override
-  int get hashCode => hash2(firstDrug, secondDrug);
-}

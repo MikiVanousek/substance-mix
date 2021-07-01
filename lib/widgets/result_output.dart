@@ -54,6 +54,7 @@ class ResultOutput extends StatelessWidget {
                 style: result == ComboResult.NaN
                     ? DCTextStyles.display1
                     : DCTextStyles.display1Inverted,
+                textAlign: TextAlign.center,
               ),
             ],
           )),

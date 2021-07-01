@@ -1,3 +1,4 @@
+import 'package:drug_combos/bloc/dc_legal_bloc.dart';
 import 'package:drug_combos/presets/dc_colors.dart';
 import 'package:drug_combos/presets/dc_dimens.dart';
 import 'package:drug_combos/presets/dc_icons.dart';
@@ -21,7 +22,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -39,8 +39,11 @@ class MyApp extends StatelessWidget {
       systemNavigationBarIconBrightness: Brightness.dark, //navigation bar icon
     ));
 
-    return BlocProvider<DCBloc>(
-      create: (BuildContext context) => DCBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<DCBloc>(create: (_) => DCBloc()),
+        BlocProvider<DCLegalBloc>(create: (_) => DCLegalBloc()),
+      ],
       child: WidgetsApp(
         title: 'Flutter Demo',
         color: DCColors.primary,
