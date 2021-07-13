@@ -22,7 +22,7 @@ class DCCard extends StatelessWidget{
           borderRadius: BorderRadius.circular(DCDimens.radius),
         ),
         height: height,
-        padding: EdgeInsets.symmetric(horizontal: DCDimens.paddingHorizontalSmall),
+        padding: EdgeInsets.symmetric(horizontal: DCDimens.paddingHorizontalSmall, vertical: DCDimens.paddingHorizontalSmall),
         alignment: alignment,
         child: child,
       ),

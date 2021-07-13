@@ -9,51 +9,71 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DCLegalPopup extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => GestureDetector(
-        onTap: () => BlocProvider.of<DCLegalBloc>(context).setAccepted(),
-        child: Padding(
-          padding: EdgeInsets.all(DCDimens.paddingSmall),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Terms & Conditions',
-                style: DCTextStyles.display
-                    .copyWith(fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: DCDimens.paddingHorizontalSmall,
-              ),
-              DCCard(
-                child: Text('You give up all your rights...', style: DCTextStyles.termsAndConditions,),
-              ),
-              SizedBox(
-                height: DCDimens.paddingHorizontalSmall,
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Expanded(
-                      child: DCCard(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Reject',
-                            style: DCTextStyles.display,
-                          ))),
-                  SizedBox(
-                    width: DCDimens.paddingSmall,
+  Widget build(BuildContext context) => Padding(
+        padding: EdgeInsets.only(left: DCDimens.paddingHorizontalSmall, right: DCDimens.paddingHorizontalSmall, top: 80),
+        child: SingleChildScrollView(
+          child: IntrinsicHeight(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  'Terms & Conditions',
+                  style: DCTextStyles.display.copyWith(fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: DCDimens.paddingSmall,
+                ),
+                IntrinsicHeight(
+                  child: DCCard(
+                    height: double.infinity,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'By using this application you agree to the Terms & Conditions listed below.',
+                          style: DCTextStyles.termsAndConditions,
+                        ),
+                        SizedBox(height: DCDimens.paddingSmall,),
+                        Text(
+                            'The author of this application encourages you to use neither legal nor illegal substances. This application was created for harm reduction purposes. If you decide to use a substance, you do so at your own risk and you are solely responsible for your actions.',
+                            style: DCTextStyles.termsAndConditions,
+                        ),
+                        SizedBox(height: DCDimens.paddingSmall,),
+                        Text(
+                            'This app has been created with the help of Tripsit.me Combination Chart. All of the information provided is meant as a quick reference. While the developer believes all of the information to be correct, it does not necessarily have to be and further research should always be done.',
+                          style: DCTextStyles.termsAndConditions,
+                        ),
+
+                      ],
+                    ),
                   ),
-                  Expanded(child: DCCard(
+                ),
+                SizedBox(
+                  height: DCDimens.paddingSmall,
+                ),
+                BlocListener<DCLegalBloc, DCLegalState>(
+                  listener: (context, state) {
+                    if (state == DCLegalState.accepted) {
+                      Navigator.pop(context);
+                      debugPrint('T&C were just agreed to');
+                    }
+                  },
+                  child: DCCard(
+                      onTap: () {
+                        BlocProvider.of<DCLegalBloc>(context).setAccepted();
+                      },
                       color: DCColors.accent,
                       alignment: Alignment.center,
-                      child: Text('Accept', style: DCTextStyles.displayInverted,)
-                    )
-                  ),
-                ],
-              ),
-            ],
+                      child: Text(
+                        'Accept',
+                        style: DCTextStyles.displayInverted,
+                      )),
+                ),
+              ],
+            ),
           ),
         ),
       );
