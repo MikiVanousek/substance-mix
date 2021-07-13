@@ -27,7 +27,7 @@ class ResultOutput extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Text(
         'Result:',
-        style: DCTextStyles.display1,
+        style: DCTextStyles.display,
       ),
       SizedBox(
         height: DCDimens.paddingHorizontalSmall,
@@ -52,8 +52,8 @@ class ResultOutput extends StatelessWidget {
               Text(
                 resultStrings[result],
                 style: result == ComboResult.NaN
-                    ? DCTextStyles.display1
-                    : DCTextStyles.display1Inverted,
+                    ? DCTextStyles.display
+                    : DCTextStyles.displayInverted,
                 textAlign: TextAlign.center,
               ),
             ],

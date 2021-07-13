@@ -62,7 +62,7 @@ class DCPicker extends StatelessWidget {
                           .itemSelected(index),
                       child: Text(
                         state.selectableObjects[index].toString(),
-                        style: DCTextStyles.display1,
+                        style: DCTextStyles.display,
                       ),
                     ),
                   );

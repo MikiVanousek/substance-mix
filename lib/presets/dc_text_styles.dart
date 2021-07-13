@@ -2,21 +2,29 @@ import 'package:drug_combos/presets/dc_colors.dart';
 import 'package:flutter/cupertino.dart';
 
 class DCTextStyles {
-  static const TextStyle display1 = TextStyle(
+  static const TextStyle display = TextStyle(
     fontFamily: 'Play',
      color: DCColors.accent,
-     fontSize: 22
-  );
+     fontSize: 22,
+  ),
 
-  static const TextStyle display1Inverted = TextStyle(
+  displayInverted = TextStyle(
       fontFamily: 'Play',
       color: DCColors.primary,
-      fontSize: 22
-  );
+      fontSize: 22,
+  ),
 
-  static const TextStyle title = TextStyle(
+  termsAndConditions = TextStyle(
+      fontFamily: 'Play',
+      color: DCColors.accent,
+      fontWeight: FontWeight.w100,
+      fontSize: 14,
+  ),
+
+  title = TextStyle(
       fontFamily: 'GravitasOne',
       color: DCColors.accent,
-      fontSize: 22
+      fontSize: 22,
   );
+
 }

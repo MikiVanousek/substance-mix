@@ -7,8 +7,9 @@ class DCCard extends StatelessWidget{
   final double height;
   final Color color;
   final void Function() onTap;
+  final Alignment alignment;
 
-  const DCCard({this.height = DCDimens.cardHeight, this.child, this.color = DCColors.primary, this.onTap});
+  const DCCard({this.height = DCDimens.cardHeight, this.child, this.color = DCColors.primary, this.onTap, this.alignment = Alignment.centerLeft});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class DCCard extends StatelessWidget{
         ),
         height: height,
         padding: EdgeInsets.symmetric(horizontal: DCDimens.paddingHorizontalSmall),
-        alignment: Alignment.centerLeft,
+        alignment: alignment,
         child: child,
       ),
     );

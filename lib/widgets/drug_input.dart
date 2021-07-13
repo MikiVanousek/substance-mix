@@ -24,7 +24,7 @@ class DrugInput extends StatelessWidget {
       children: [
         Text(
           label,
-          style: DCTextStyles.display1,
+          style: DCTextStyles.display,
         ),
         SizedBox(
           height: DCDimens.paddingHorizontalSmall,
@@ -39,8 +39,8 @@ class DrugInput extends StatelessWidget {
               Text(
                 content,
                 style: selected
-                    ? DCTextStyles.display1Inverted
-                    : DCTextStyles.display1,
+                    ? DCTextStyles.displayInverted
+                    : DCTextStyles.display,
               ),
               Transform.rotate(
                 angle: selected ? pi * 0.5 : 0,
