@@ -19,7 +19,7 @@ class DCHomescreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<DCLegalBloc, DCLegalState>(
-      listener: (BuildContext context, DCLegalState state) {
+      listener: (BuildContext c, DCLegalState state) {
         if (state == DCLegalState.notAccepted)
           Navigator.of(context).pushNamed(DCRouter.routeLegalPopup);
         else {
