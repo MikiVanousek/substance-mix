@@ -1,7 +1,4 @@
-# drug_combos
+# Substance Mix
 
-A Flutter application, allowing you to quickly check, how dagerous is a drug combiantion.
+A Flutter application, allowing you to quickly check, how dangerous is a combination of two substances.
 Made by Mikuláš Vanoušek
-
-## Getting Started
-

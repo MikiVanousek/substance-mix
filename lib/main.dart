@@ -1,21 +1,10 @@
-import 'package:drug_combos/bloc/dc_legal_bloc.dart';
-import 'package:drug_combos/presets/dc_colors.dart';
-import 'package:drug_combos/presets/dc_dimens.dart';
-import 'package:drug_combos/presets/dc_icons.dart';
-import 'package:drug_combos/presets/dc_text_styles.dart';
-import 'package:drug_combos/dc_router.dart';
-import 'package:drug_combos/screens/dc_homescreen.dart';
-import 'package:drug_combos/widgets/dc_scaffold.dart';
-import 'package:drug_combos/widgets/drug_input.dart';
-import 'package:drug_combos/widgets/result_output.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_svg/svg.dart';
-
-import 'bloc/dc_bloc.dart';
-import 'drugs/drug.dart';
+import 'package:substance_mix/bloc/sm_bloc.dart';
+import 'package:substance_mix/bloc/sm_legal_bloc.dart';
+import 'package:substance_mix/presets/sm_colors.dart';
+import 'package:substance_mix/sm_router.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,11 +15,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      systemNavigationBarColor: DCColors.primary,
+      systemNavigationBarColor: SMColors.primary,
       // navigation bar color
-      statusBarColor: DCColors.primary,
+      statusBarColor: SMColors.primary,
       // status bar color
-      systemNavigationBarDividerColor: DCColors.navigationDivider,
+      systemNavigationBarDividerColor: SMColors.navigationDivider,
       //Navigation bar divider color
       statusBarBrightness: Brightness.dark,
       //status bar brigtness
@@ -41,14 +30,14 @@ class MyApp extends StatelessWidget {
 
     return MultiBlocProvider(
       providers: [
-        BlocProvider<DCBloc>(create: (_) => DCBloc()),
-        BlocProvider<DCLegalBloc>(create: (_) => DCLegalBloc()),
+        BlocProvider<SMBloc>(create: (_) => SMBloc()),
+        BlocProvider<SMLegalBloc>(create: (_) => SMLegalBloc()),
       ],
       child: WidgetsApp(
         title: 'Substance Mix',
-        color: DCColors.primary,
-        onGenerateRoute: DCRouter.generate,
-        initialRoute: DCRouter.routeHomescreen,
+        color: SMColors.primary,
+        onGenerateRoute: SMRouter.generate,
+        initialRoute: SMRouter.routeHomescreen,
       ),
     );
   }

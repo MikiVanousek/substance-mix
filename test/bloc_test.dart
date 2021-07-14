@@ -1,25 +1,28 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:drug_combos/bloc/dc_bloc.dart';
-import 'package:drug_combos/bloc/drug_selection_state.dart';
-import 'package:drug_combos/drugs/drug.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:substance_mix/bloc/sm_bloc.dart';
+import 'package:substance_mix/bloc/substance_selection_state.dart';
+import 'package:substance_mix/model/substance.dart';
 
 main() {
   group('Bloc tests', () {
-
-    blocTest('changing first drug',
-        build: () => DCBloc(),
+    blocTest('changing first substance',
+        build: () => SMBloc(),
         act: (bloc) {
-          bloc.add(DrugSelectedEvent(Drug.cannabis, DrugInputType.first));
-          bloc.add(DrugSelectedEvent(Drug.lsd, DrugInputType.second));
-          bloc.add(DrugSelectedEvent(null, DrugInputType.first));
+          bloc.add(SubstanceSelectedEvent(
+              Substance.cannabis, SubstanceInputType.first));
+          bloc.add(
+              SubstanceSelectedEvent(Substance.lsd, SubstanceInputType.second));
+          bloc.add(SubstanceSelectedEvent(null, SubstanceInputType.first));
         },
         expect: () => [
-            DrugSelectionState(firstDrug: Drug.cannabis, secondDrug: null),
-            DrugSelectionState(firstDrug: Drug.cannabis, secondDrug: Drug.lsd),
-            DrugSelectionState(firstDrug: null, secondDrug: Drug.lsd),
-          ]
-    );
-
-});
+              SubstanceSelectionState(
+                  firstSubstance: Substance.cannabis, secondSubstance: null),
+              SubstanceSelectionState(
+                  firstSubstance: Substance.cannabis,
+                  secondSubstance: Substance.lsd),
+              SubstanceSelectionState(
+                  firstSubstance: null, secondSubstance: Substance.lsd),
+            ]);
+  });
 }

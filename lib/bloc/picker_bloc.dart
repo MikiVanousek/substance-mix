@@ -1,22 +1,21 @@
-import 'package:drug_combos/drugs/drug.dart';
-import 'package:drug_combos/drugs/drug_category.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:substance_mix/model/substance.dart';
+import 'package:substance_mix/model/substance_category.dart';
 
 class PickerBloc extends Cubit<PickerState> {
-  static const initialState = PickerState(DrugCategory.allCategories);
+  static const initialState = PickerState(SubstanceCategory.allCategories);
 
   PickerBloc() : super(initialState);
 
   void itemSelected(int id) {
     if (state.selectedCategory == null) {
-      DrugCategory category = DrugCategory.allCategories[id];
-      emit(PickerState(category.drugs, selectedCategory: category));
+      SubstanceCategory category = SubstanceCategory.allCategories[id];
+      emit(PickerState(category.substances, selectedCategory: category));
     } else {
-      Drug selectedDrug = state.selectedCategory.drugs[id];
+      Substance selectedSubstance = state.selectedCategory.substances[id];
       emit(PickerState([],
           selectedCategory: state.selectedCategory,
-          selectedDrug: selectedDrug));
+          selectedSubstance: selectedSubstance));
     }
   }
 
@@ -27,9 +26,9 @@ class PickerBloc extends Cubit<PickerState> {
 
 class PickerState {
   final List<Object> selectableObjects;
-  final DrugCategory selectedCategory;
-  final Drug selectedDrug;
+  final SubstanceCategory selectedCategory;
+  final Substance selectedSubstance;
 
   const PickerState(this.selectableObjects,
-      {this.selectedCategory, this.selectedDrug});
+      {this.selectedCategory, this.selectedSubstance});
 }
