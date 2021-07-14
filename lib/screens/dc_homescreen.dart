@@ -13,9 +13,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
-
 class DCHomescreen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return BlocListener<DCLegalBloc, DCLegalState>(
@@ -26,33 +24,14 @@ class DCHomescreen extends StatelessWidget {
           debugPrint('Legal disclaimer is accepted...');
         }
       },
-
       child: DCScaffold(
-        appbar: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            SizedBox(width: DCDimens.appBarIconPadding,),
-            Expanded(
-              child: Center(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      SvgPicture.asset(DCIcons.logo, width: 32, height: 32,),
-                      Text(
-                        'DrugMix',
-                        style: DCTextStyles.title,
-                      ),
-                    ],
-                  )),
-            ),
-            SvgPicture.asset(
-              DCIcons.info,
-              height: DCDimens.iconSize,
-              width: DCDimens.iconSize,
-            ),
-            SizedBox(width: DCDimens.appBarIconPadding,)
-          ],
+        appbar: Center(
+          child: RichText(
+              text: TextSpan(style: DCTextStyles.title, children: [
+            TextSpan(text: ' Substance'),
+            TextSpan(
+                text: 'Mix', style: TextStyle(fontWeight: FontWeight.bold)),
+          ])),
         ),
         children: [
           SizedBox(
@@ -62,7 +41,8 @@ class DCHomescreen extends StatelessWidget {
             builder: (_, state) => DrugInput(
               label: 'First Drug:',
               content: state?.firstDrug?.name ?? 'Choose...',
-              onTap: () => Navigator.of(context).pushNamed(DCRouter.routeFirstDrugPickerScreen),
+              onTap: () => Navigator.of(context)
+                  .pushNamed(DCRouter.routeFirstDrugPickerScreen),
             ),
           ),
           SizedBox(
@@ -72,14 +52,16 @@ class DCHomescreen extends StatelessWidget {
             builder: (_, state) => DrugInput(
               label: 'Second Drug:',
               content: state?.secondDrug?.name ?? 'Choose...',
-              onTap: ()=> Navigator.of(context).pushNamed(DCRouter.routeSecondDrugPickerScreen),
+              onTap: () => Navigator.of(context)
+                  .pushNamed(DCRouter.routeSecondDrugPickerScreen),
             ),
           ),
           SizedBox(
             height: DCDimens.paddingHorizontalBig,
           ),
-          Expanded(child: BlocBuilder<DCBloc, DrugSelectionState>(
-              builder: (_, state) => ResultOutput(state.result))),
+          Expanded(
+              child: BlocBuilder<DCBloc, DrugSelectionState>(
+                  builder: (_, state) => ResultOutput(state.result))),
           SizedBox(
             height: 64,
           ),

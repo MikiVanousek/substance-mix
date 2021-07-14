@@ -24,7 +24,7 @@ class DrugInput extends StatelessWidget {
       children: [
         Text(
           label,
-          style: DCTextStyles.display,
+          style: DCTextStyles.displayBold,
         ),
         SizedBox(
           height: DCDimens.paddingHorizontalSmall,

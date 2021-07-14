@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<DCLegalBloc>(create: (_) => DCLegalBloc()),
       ],
       child: WidgetsApp(
-        title: 'Flutter Demo',
+        title: 'Substance Mix',
         color: DCColors.primary,
         onGenerateRoute: DCRouter.generate,
         initialRoute: DCRouter.routeHomescreen,

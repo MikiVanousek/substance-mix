@@ -27,7 +27,7 @@ class ResultOutput extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Text(
         'Result:',
-        style: DCTextStyles.display,
+        style: DCTextStyles.displayBold,
       ),
       SizedBox(
         height: DCDimens.paddingHorizontalSmall,
