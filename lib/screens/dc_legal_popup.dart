@@ -12,7 +12,7 @@ class DCLegalPopup extends StatelessWidget {
   Widget build(BuildContext context) => WillPopScope(
     onWillPop: () async => false,
     child: Padding(
-          padding: EdgeInsets.only(left: DCDimens.paddingHorizontalSmall, right: DCDimens.paddingHorizontalSmall, top: 80),
+          padding: EdgeInsets.symmetric(horizontal: DCDimens.paddingHorizontalSmall),
           child: SingleChildScrollView(
             child: IntrinsicHeight(
               child: Column(
@@ -20,6 +20,7 @@ class DCLegalPopup extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  SizedBox(height: 80,),
                   Text(
                     'Terms & Conditions',
                     style: DCTextStyles.display.copyWith(fontWeight: FontWeight.bold),
@@ -74,6 +75,7 @@ class DCLegalPopup extends StatelessWidget {
                           style: DCTextStyles.displayInverted,
                         )),
                   ),
+                  SizedBox(height: 80,),
                 ],
               ),
             ),
