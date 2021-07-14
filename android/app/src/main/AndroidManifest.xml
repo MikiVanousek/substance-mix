@@ -2,7 +2,7 @@
     package="com.vanousek.substance_mix">
    <application
         android:label="Substance Mix"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
