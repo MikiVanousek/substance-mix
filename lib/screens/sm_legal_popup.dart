@@ -47,14 +47,14 @@ class SMLegalPopup extends StatelessWidget {
                             height: SMDimens.paddingSmall,
                           ),
                           Text(
-                            'The author of this application encourages you to use neither legal nor illegal substances. This application was created for harm reduction purposes. If you decide to use a substance, you do so at your own risk and you are solely responsible for your actions.',
+                            'The author of this application does not encourage you to use legal or illegal substances. This application was created for harm reduction purposes. If you decide to use a substance, you do so at your own risk and you are solely responsible for your actions.',
                             style: SMTextStyles.termsAndConditions,
                           ),
                           SizedBox(
                             height: SMDimens.paddingSmall,
                           ),
                           Text(
-                            'This app has been created with the help of Tripsit.me Combination Chart. All of the information provided is meant as a quick reference. While the developer believes all of the information to be correct, it does not necessarily have to be and further research should always be done.',
+                            'All the data in this app is sourced from TripSit (see combo.tripsit.me). All of the information provided is meant as a quick reference. Further research must always be done!',
                             style: SMTextStyles.termsAndConditions,
                           ),
                         ],
