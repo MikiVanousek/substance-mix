@@ -18,7 +18,7 @@ class Substance {
   static const Substance ketamine = Substance(10, 'Ketamine');
   static const Substance mxe = Substance(11, 'MXE');
   static const Substance dxm = Substance(12, 'DXM');
-  static const Substance nitrous = Substance(13, 'MXE');
+  static const Substance nitrous = Substance(13, 'Nitrous');
 
   static const Substance amphetamines = Substance(14, 'Amphetamines');
   static const Substance mdma = Substance(15, 'MDMA');
